@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sample page</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <p>This is a sample page demonstrating how Express and socket.io work.</p>
+
+    <p>
+      Here's a random number fetched via REST: <span id="random-number"></span>
+    </p>
+
+    <p>Server welcome message: <span id="welcome"></span></p>
+
+    <p>Seconds since server started: <span id="seconds"></span></p>
+
+    <p>Clients online: <span id="online"></span></p>
+
+    <!-- this link is magically provided by socket.io -->
+    <!-- <script src="/remote/token1/socket.io/socket.io.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./index.js"></script>
+    <!-- <script type="text/javascript" src="http://localhost/javascripts/app.js?token=555555"></script>
+    <script>
+       window.addEventListener("load", function () {
+         console.log("tesstts");
+         let urlParams = new URLSearchParams(window.location.search);
+         let options = {
+          udId: urlParams.get("udId") || "2323123123",
+          ip: urlParams.get("ip") || "127.0.0.1",
+          port: urlParams.get("port") || 9002,
+          runType: urlParams.get("runType"),
+          transactionId: urlParams.get("transactionId") || 1234,
+          userId: urlParams.get("userId") || 1234
+  };
+        window.RenderApp(options);
+      });
+    </script> -->
+  </body>
+</html>
