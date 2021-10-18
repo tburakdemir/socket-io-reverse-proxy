@@ -5,23 +5,23 @@ const { createProxyMiddleware, Filter, Options, RequestHandler } = require('http
 
 const app = express();
 
+//key value pairs
+
+const redis = {
+  device1: "3001",
+  device2: "3002",
+}
+
 app.use("/remote/device1", createProxyMiddleware({ target: 'http://localhost:3001', changeOrigin: true, pathRewrite: {"^/remote/device1": ""} }))
 app.use("/remote/device2", createProxyMiddleware({ target: 'http://localhost:3002', changeOrigin: true, pathRewrite: {"^/remote/device2": ""} }))
 app.use('/socket.io', createProxyMiddleware({ changeOrigin: true, router: function (req){
-  if(req.query.token == "device1")
+    console.log("socket query: " + req.query.token);
     return {
       protocol: "http",
       host: "localhost",
-      port: 3001,
+      port: redis[req.query.token] || 3001,
       ws: true ,
     }
- 
-    return {
-      protocol: "http",
-      host: "localhost",
-      port: 3002,
-      ws: true
-    } 
 }}));
 app.listen(80);
 
