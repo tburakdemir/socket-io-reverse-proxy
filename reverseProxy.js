@@ -12,8 +12,8 @@ const redis = {
   device2: "3002",
 }
 
-app.use("/remote/device1", createProxyMiddleware({ target: 'http://localhost:3001', changeOrigin: true, pathRewrite: {"^/remote/device1": ""} }))
-app.use("/remote/device2", createProxyMiddleware({ target: 'http://localhost:3002', changeOrigin: true, pathRewrite: {"^/remote/device2": ""} }))
+// app.use("/remote/device1", createProxyMiddleware({ target: 'http://localhost:3001', changeOrigin: true, pathRewrite: {"^/remote/device1": ""} }))
+// app.use("/remote/device2", createProxyMiddleware({ target: 'http://localhost:3002', changeOrigin: true, pathRewrite: {"^/remote/device2": ""} }))
 app.use('/socket.io', createProxyMiddleware({ changeOrigin: true, router: function (req){
     console.log("socket query: " + req.query.token);
     return {
